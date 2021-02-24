@@ -17,16 +17,21 @@ struct ContentView: View {
   
   // MARK: - BODY
   var body: some View {
-    Form {
-      Section {
-        TextField("Amount", text: $checkAmount)
-          .keyboardType(.decimalPad)
+    NavigationView {
+      Form {
+        Section {
+          TextField("Amount", text: $checkAmount)
+            .keyboardType(.decimalPad)
+          
+          Picker("Number of people", selection: $numberOfPeople) {
+            ForEach(2 ..< 100) {
+              Text("\($0)")
+            }
+          }
+        }
       }
-      
-      Section {
-        Text("$\(checkAmount)")
-      }
-    }
+      .navigationBarTitle("WeSplit")
+    } //: NAVIGATION
   }
 }
 
